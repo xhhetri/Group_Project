@@ -1,0 +1,200 @@
+create database summer_project;
+
+use summer_project;
+
+CREATE TABLE Students (
+  sno INT AUTO_INCREMENT PRIMARY KEY,
+  student_name VARCHAR(255),
+  roll_id INT,
+  email VARCHAR(255),
+  gender ENUM('Male', 'Female', 'Other'),
+  class_name INT,
+  section VARCHAR(1),
+  dob DATE,
+  INDEX idx_student_name_roll_id (student_name, roll_id),
+  INDEX idx_class_name (class_name)
+);
+INSERT INTO Students (student_name, roll_id, email, gender, class_name, section, dob)
+VALUES
+  ('John Doe', 101, 'john.doe@example.com', 'Male', 10, 'A', '2005-05-15'),
+  ('Jane Smith', 102, 'jane.smith@example.com', 'Female', 11, 'B', '2004-09-23'),
+  ('Michael Johnson', 103, 'michael.johnson@example.com', 'Male', 9, 'C', '2006-02-10'),
+  ('Emily Brown', 104, 'emily.brown@example.com', 'Female', 12, 'A', '2005-11-30'),
+  ('Alex Williams', 105, 'alex.williams@example.com', 'Other', 8, 'B', '2007-07-18');
+
+desc Students;
+CREATE TABLE subject_data (
+  sno INT AUTO_INCREMENT PRIMARY KEY,
+  subject_name VARCHAR(20), 
+  subject_code VARCHAR(10),
+  UNIQUE (subject_name),
+  INDEX idx_subject_code (subject_code)
+);
+
+desc subject_data;
+
+
+
+CREATE TABLE class_one (
+  sno INT AUTO_INCREMENT PRIMARY KEY,
+  student_name VARCHAR(50),
+  roll_no INT,
+  term INT,
+  social INT,
+  science INT,
+  maths INT,
+  nepali INT,
+  english INT,
+  INDEX idx_student_roll_term (student_name, roll_no, term)
+);
+desc class_one;
+CREATE TABLE class_two (
+  sno INT AUTO_INCREMENT PRIMARY KEY,
+  student_name VARCHAR(50),
+  roll_no INT,
+  term INT,
+  social INT,
+  science INT,
+  maths INT,
+  nepali INT,
+  english INT,
+  moral INT,
+  INDEX idx_student_roll_term (student_name, roll_no, term)
+);
+desc class_two;
+
+CREATE TABLE class_three (
+  sno INT AUTO_INCREMENT PRIMARY KEY,
+  student_name VARCHAR(50),
+  roll_no INT,
+  term INT,
+  social INT,
+  science INT,
+  maths INT,
+  nepali INT,
+  english INT,
+  moral_comm INT,
+  INDEX idx_student_roll_term (student_name, roll_no, term)
+);
+desc class_three;
+
+CREATE TABLE class_four (
+  sno INT AUTO_INCREMENT PRIMARY KEY,
+  student_name VARCHAR(50),
+  roll_no INT,
+  term INT,
+  social_moral INT,
+  science INT,
+  maths INT,
+  nepali INT,
+  english INT,
+  comm INT,
+  INDEX idx_student_roll_term (student_name, roll_no, term)
+);
+desc class_four;
+
+CREATE TABLE class_five (
+  sno INT AUTO_INCREMENT PRIMARY KEY,
+  student_name VARCHAR(50),
+  roll_no INT,
+  term INT,
+  social_moral INT,
+  science INT,
+  maths INT,
+  nepali INT,
+  english INT,
+  comm INT,
+  INDEX idx_student_roll_term (student_name, roll_no, term)
+);
+desc class_five;
+
+CREATE TABLE login_data (
+  sno INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(20) UNIQUE,
+  password VARCHAR(20)
+);
+
+SHOW TABLES;
+
+INSERT INTO class_one (student_name, roll_no, term, social, science, maths, nepali, english)
+VALUES ('John Doe', 1, 1, 35, 80, 95, 80, 85),
+       ('Jane Smith', 2, 1, 75, 36, 90, 95, 80),
+       ('Mike Johnson', 3, 1, 80, 70, 22, 90, 95);
+       
+INSERT INTO class_two (student_name, roll_no, term, social, science, maths, nepali, english, moral)
+VALUES ('Ram ', 1, 1, 35, 80, 95, 80, 85, 60),
+       ('shyam', 2, 1, 75, 36, 90, 95, 80, 60),
+       ('hari', 3, 1, 80, 70, 22, 90, 95, 60);
+
+INSERT INTO class_three (student_name, roll_no, term, social, science, maths, nepali, english, moral_comm)
+VALUES ('gita ', 1, 1, 35, 80, 95, 80, 85, 60),
+       ('rita', 2, 1, 75, 36, 90, 95, 80, 60),
+       ('krishna', 3, 1, 80, 70, 22, 90, 95, 60);
+
+INSERT INTO class_four (student_name, roll_no, term, social_moral, science, maths, nepali, english, comm)
+VALUES ('jane ', 1, 1, 35, 80, 95, 80, 85, 60),
+       ('peter', 2, 1, 75, 36, 90, 95, 80, 60),
+       ('hardy', 3, 1, 80, 70, 22, 90, 95, 60);
+       
+INSERT INTO class_five (student_name, roll_no, term, social_moral, science, maths, nepali, english, comm)
+VALUES ('tommy ', 1, 1, 35, 80, 95, 80, 85, 60),
+       ('randy', 2, 1, 75, 36, 90, 95, 80, 60),
+       ('smoky', 3, 1, 80, 70, 22, 90, 95, 60);
+       
+select * from class_one;
+select * from class_two;
+select * from class_three;
+select * from class_four;
+select * from class_five;
+select * from students;
+select * from login_data;
+
+
+CREATE TABLE  teachers (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY ,
+    name TEXT NOT NULL,
+    teacher_id TEXT NOT NULL,
+    email TEXT NOT NULL,
+    address TEXT NOT NULL,
+    gender TEXT NOT NULL,
+    dob TEXT NOT NULL
+);
+
+INSERT INTO teachers (name, teacher_id, email, address, gender, dob) VALUES
+    ('John Doe', 'TCH001', 'john.doe@email.com', '123 Main St', 'Male', '1990-01-01'),
+    ('Jane Smith', 'TCH002', 'jane.smith@email.com', '456 Elm St', 'Female', '1985-05-10'),
+    ('Michael Johnson', 'TCH003', 'michael.johnson@email.com', '789 Oak St', 'Male', '1982-11-15'),
+    ('Emily Brown', 'TCH004', 'emily.brown@email.com', '101 Pine St', 'Female', '1992-08-20'),
+    ('Robert Lee', 'TCH005', 'robert.lee@email.com', '222 Birch St', 'Male', '1988-04-30');
+    
+select * from teachers;
+select * from login_data;
+show tables;
+
+INSERT INTO login_data (username, password) VALUES
+('user1', 'pass1'),
+('user2', 'pass2'),
+('user3', 'pass3'),
+('user4', 'pass4'),
+('user5', 'pass5');
+
+CREATE TABLE seat_placement (
+	sno INTEGER AUTO_INCREMENT PRIMARY KEY ,
+  class VARCHAR(50),
+  room_number VARCHAR(10),
+  roll_from INT,
+  roll_to INT
+);
+drop table seat_placement;
+select * from seat_placement;
+DELETE FROM seat_placement
+WHERE class = '2' AND room_number = '104';
+
+
+INSERT INTO seat_placement (class, room_number, roll_from, roll_to)
+VALUES
+  ('1', '101', 101, 120),
+  ('1', '102', 121, 140),
+  ('2', '103', 141, 160);
+
+
